@@ -11,10 +11,6 @@ Refer to the UserGuide.doc for the steps to setup and run the project. It contai
 
 •	Scenarios for invalid status error messages covered
 
-•	Positive scnearios covered
-
-•	Negative scenarios covered
-
 •	Validation of JSON responses covered
 
 # Knows Issues / Scenarios not covered
