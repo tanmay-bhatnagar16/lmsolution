@@ -97,7 +97,7 @@ public class DriverCompleteOrderTests {
 	 * followed : Cancelled to Completed
 	 */
 	@Test()
-	public void TestCase_Complete_Order_VerifyStatusCode_InvalidFlow() {
+	public void TestCase_Complete_Order_VerifyStatusCode_InvalidFlow_CancelledToComplete() {
 		JSONObject inputJSon;
 		int id = 0, statusCodeExpected = HttpStatus.SC_UNPROCESSABLE_ENTITY, actualStatus;
 		try {
@@ -184,6 +184,49 @@ public class DriverCompleteOrderTests {
 			id = CommonUtils.placeOrder(inputJSon);
 			Assert.assertTrue(id != 0, "ID Not Generated ");
 
+			// Complete Order and check status
+			outputJson = CommonUtils.completeOrder(id);
+			actualStatus = outputJson.getString(field_message);
+
+			logger.info("Error Message " + actualStatus);
+
+			Assert.assertEquals(actualStatus, expectedStatus, "Error message mismatch ");
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			Assert.fail(e.getMessage());
+		}
+
+	}
+
+	/**
+	 * description : Negative scenario : Verifies error message for Complete order
+	 * functionality when order is already complete. Invalid Flow : Complete to
+	 * Complete
+	 */
+	@Test()
+	public void TestCase_Complete_Order_VerifyOrderStatus_InvalidFlow_CompleteToComplete() {
+
+		JSONObject inputJSon, outputJson;
+		int id = 0;
+		String actualStatus, expectedStatus;
+		try {
+			// Create test data
+			inputJSon = CommonUtils.getDefaultJSON(false);
+			expectedStatus = CommonUtils.getExcelData("ErrorMessages", "ErrorMessage_OrderNotOnGoing");
+
+			// Place Order
+			id = CommonUtils.placeOrder(inputJSon);			
+			Assert.assertTrue(id != 0, "ID Not Generated ");
+			
+			//Take Order
+			outputJson = CommonUtils.takeOrder(id);
+			Assert.assertTrue(outputJson.has("id"), "Take Order failed");
+			
+			// Complete Order
+			outputJson = CommonUtils.completeOrder(id);
+			Assert.assertTrue(outputJson.has("id"), "Take Order failed");
+			
 			// Complete Order and check status
 			outputJson = CommonUtils.completeOrder(id);
 			actualStatus = outputJson.getString(field_message);

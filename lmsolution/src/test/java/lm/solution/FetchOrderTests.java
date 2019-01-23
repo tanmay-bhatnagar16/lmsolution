@@ -252,6 +252,7 @@ public class FetchOrderTests {
 			JSONObject outputJSon = apiCallHandlerObj.getResponseJson().getJSONObject(field_fare);
 			double expectedFare = outputJSon.getDouble(field_amount);
 
+			//Fetch order
 			CommonUtils.fetchOrder(id);
 			// fetch fare from fetch order response
 			outputJSon = apiCallHandlerObj.getResponseJson().getJSONObject(field_fare);
@@ -262,6 +263,122 @@ public class FetchOrderTests {
 			Assert.assertEquals(actualFare, expectedFare, "Fare mismatch ");
 
 		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			Assert.fail(e.getMessage());
+		}
+
+	}
+
+	/**
+	 * description : Verifies fetch order functionality for an ongoing order
+	 * 
+	 */
+	@Test()
+	public void TestCase_Fetch_Order_VerifyOrderStatus_OngoingOrder() {
+
+		JSONObject inputJSon, outputJson;
+		int id = 0;
+		String expectedStatus, actualStatus;
+		try {
+			// Create test data
+			inputJSon = CommonUtils.getDefaultJSON(false);
+			expectedStatus = CommonUtils.getExcelData("Constants", "Status_Ongoing");
+			// Place order
+			id = CommonUtils.placeOrder(inputJSon);
+			Assert.assertTrue(id != 0, "ID Not Generated ");
+			
+			//Take Order
+			outputJson = CommonUtils.takeOrder(id);
+			Assert.assertTrue(apiCallHandlerObj.getResponseJson().has("id"), "Take Order failed");
+			
+			//Fetch order
+			outputJson = CommonUtils.fetchOrder(id);
+
+			// Get status
+			actualStatus = outputJson.getString(field_status);
+			logger.info("Valid Status " + actualStatus);
+
+			Assert.assertEquals(actualStatus, expectedStatus, "Status do not match ");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			Assert.fail(e.getMessage());
+		}
+
+	}
+
+	/**
+	 * description : Verifies fetch order functionality for a cancelled order
+	 * 
+	 */
+	@Test()
+	public void TestCase_Fetch_Order_VerifyOrderStatus_CancelledOrder() {
+
+		JSONObject inputJSon, outputJson;
+		int id = 0;
+		String expectedStatus, actualStatus;
+		try {
+			// Create test data
+			inputJSon = CommonUtils.getDefaultJSON(false);
+			expectedStatus = CommonUtils.getExcelData("Constants", "Status_Cancelled");
+			// Place order
+			id = CommonUtils.placeOrder(inputJSon);
+			Assert.assertTrue(id != 0, "ID Not Generated ");
+			
+			//Cancel Order
+			outputJson = CommonUtils.cancelOrder(id);
+			Assert.assertTrue(outputJson.has("id"), "Cancel Order failed");
+			
+			//Fetch order
+			outputJson = CommonUtils.fetchOrder(id);
+
+			// Get status
+			actualStatus = outputJson.getString(field_status);
+			logger.info("Valid Status " + actualStatus);
+
+			Assert.assertEquals(actualStatus, expectedStatus, "Status do not match ");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			Assert.fail(e.getMessage());
+		}
+
+	}
+
+	
+	/**
+	 * description : Verifies fetch order functionality for a completed order
+	 * 
+	 */
+	@Test()
+	public void TestCase_Fetch_Order_VerifyOrderStatus_CompletedOrder() {
+
+		JSONObject inputJSon, outputJson;
+		int id = 0;
+		String expectedStatus, actualStatus;
+		try {
+			// Create test data
+			inputJSon = CommonUtils.getDefaultJSON(false);
+			expectedStatus = CommonUtils.getExcelData("Constants", "Status_Completed");
+			// Place order
+			id = CommonUtils.placeOrder(inputJSon);
+			Assert.assertTrue(id != 0, "ID Not Generated ");
+			
+			//Take Order
+			outputJson = CommonUtils.takeOrder(id);
+			Assert.assertTrue(outputJson.has("id"), "Take Order failed");
+			
+			//Complete Order
+			outputJson = CommonUtils.completeOrder(id);
+			Assert.assertTrue(outputJson.has("id"), "Complete Order failed");
+			
+			//Fetch order
+			outputJson = CommonUtils.fetchOrder(id);
+
+			// Get status
+			actualStatus = outputJson.getString(field_status);
+			logger.info("Valid Status " + actualStatus);
+
+			Assert.assertEquals(actualStatus, expectedStatus, "Status do not match ");
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			Assert.fail(e.getMessage());
 		}

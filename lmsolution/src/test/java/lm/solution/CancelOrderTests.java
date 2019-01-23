@@ -195,7 +195,7 @@ public class CancelOrderTests {
 	 * followed : from Completed to Cancel
 	 */
 	@Test()
-	public void TestCase_cancel_Order_VerifyStatusCode_InvalidFlow() {
+	public void TestCase_cancel_Order_VerifyStatusCode_InvalidFlow_CompletedToCancel() {
 		JSONObject inputJSon;
 		int id = 0, statusCodeExpected = HttpStatus.SC_UNPROCESSABLE_ENTITY, actualStatus;
 		try {
@@ -254,6 +254,41 @@ public class CancelOrderTests {
 
 			logger.info("Error Message" + actualStatus);
 			Assert.assertEquals(actualStatus, expectedStatus, "Error Message do not match ");
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			Assert.fail(e.getMessage());
+		}
+
+	}
+
+	/**
+	 * description : Verifies cancel order functionality when order is already cancelled
+	 * Flow :Cancelled to Cancel
+	 */
+	@Test()
+	public void TestCase_cancel_Order_VerifyStatusCode_ValidFlow_CancelledToCancel() {
+		JSONObject inputJSon;
+		int id = 0, statusCodeExpected = HttpStatus.SC_OK, actualStatus;
+		try {
+			// Create test data
+			inputJSon = CommonUtils.getDefaultJSON(false);
+
+			// Place Order
+			id = CommonUtils.placeOrder(inputJSon);
+			Assert.assertTrue(id != 0, "ID Not Generated ");
+
+			// Cancel Order
+			CommonUtils.cancelOrder(id);
+			Assert.assertTrue(apiCallHandlerObj.getResponseJson().has("id"), "Take Order failed");
+
+			// Cancel Order again
+			CommonUtils.cancelOrder(id);
+
+			actualStatus = apiCallHandlerObj.getstatusCode();
+			logger.info("InValid Status Code for Incorrect flow of Cancel Order" + actualStatus);
+
+			Assert.assertEquals(actualStatus, statusCodeExpected, "Status do not match ");
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

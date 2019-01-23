@@ -25,7 +25,7 @@ public class DriverTakeOrderTests {
 	 * provided as input
 	 */
 	@Test()
-	public void TestCase_Take_Order_VerifyStatusCode_ValidID() {
+	public void TestCase_Take_Order_VerifyStatusCode_ValidID_AssigningToOngoing() {
 
 		JSONObject inputJSon;
 		int id = 0, statusCode = 0;
@@ -117,7 +117,7 @@ public class DriverTakeOrderTests {
 	 * followed : from Cancelled To Ongoing
 	 */
 	@Test()
-	public void TestCase_Take_Order_VerifyStatusCode_InvalidFlow() {
+	public void TestCase_Take_Order_VerifyStatusCode_InvalidFlow_CancelledToOngoing() {
 		JSONObject inputJSon;
 		int id = 0, statusCodeExpected = HttpStatus.SC_UNPROCESSABLE_ENTITY, actualStatus;
 		try {
@@ -170,6 +170,83 @@ public class DriverTakeOrderTests {
 			logger.info("Error Message" + actualStatus);
 			Assert.assertEquals(actualStatus, expectedStatus, "Error Message do not match ");
 
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			Assert.fail(e.getMessage());
+		}
+
+	}
+
+	/**
+	 * description : Verifies take order functionality when order is already Ongoing
+	 *  Flow : Ongoing To Ongoing
+	 */
+	@Test()
+	public void TestCase_Take_Order_VerifyOrderStatus_InvalidFlow_OngoingToOngoing() {
+
+		JSONObject inputJSon, outputJson;
+		int id = 0;
+		String expectedStatus, actualStatus;
+		try {
+			// Create test data
+			inputJSon = CommonUtils.getDefaultJSON(false);
+			expectedStatus = CommonUtils.getExcelData("ErrorMessages", "ErrorMessage_OrderNotAssigning");
+			// Place order
+			id = CommonUtils.placeOrder(inputJSon);
+			Assert.assertTrue(id != 0, "ID Not Generated ");
+
+			//Take Order
+			outputJson = CommonUtils.takeOrder(id);
+			Assert.assertTrue(outputJson.has("id"), "Take Order failed");
+			
+			// Take Order Again
+ 
+			outputJson = CommonUtils.takeOrder(id);
+			actualStatus = outputJson.getString(field_message);
+			logger.info("Valid Status " + actualStatus);
+
+			Assert.assertEquals(actualStatus, expectedStatus, "Status do not match ");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			Assert.fail(e.getMessage());
+		}
+
+	}
+
+	/**
+	 * description : Verifies take order functionality for a completed order
+	 * Flow : Complete to Ongoing
+	 */
+	@Test()
+	public void TestCase_Take_Order_VerifyOrderStatus_InvaliFlow_CompletedToOngoing() {
+
+		JSONObject inputJSon, outputJson;
+		int id = 0;
+		String expectedStatus, actualStatus;
+		try {
+			// Create test data
+			inputJSon = CommonUtils.getDefaultJSON(false);
+			expectedStatus = CommonUtils.getExcelData("ErrorMessages", "ErrorMessage_OrderNotAssigning");
+			// Place order
+			id = CommonUtils.placeOrder(inputJSon);
+			Assert.assertTrue(id != 0, "ID Not Generated ");
+			
+			//Take Order
+			outputJson = CommonUtils.takeOrder(id);
+			Assert.assertTrue(outputJson.has("id"), "Take Order failed");
+			
+			//Complete Order
+			outputJson = CommonUtils.completeOrder(id);
+			Assert.assertTrue(outputJson.has("id"), "Complete Order failed");
+			
+			//Take order
+			outputJson = CommonUtils.takeOrder(id);
+
+			// Get status
+			actualStatus = outputJson.getString(field_message);
+			logger.info("Valid Status " + actualStatus);
+
+			Assert.assertEquals(actualStatus, expectedStatus, "Status do not match ");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			Assert.fail(e.getMessage());

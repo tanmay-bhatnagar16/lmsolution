@@ -421,6 +421,72 @@ public class PlaceOrderTests {
 
 	}
 
+	/**
+	 * description : Verifies place order functionality for blank JSON payload
+	 */
+	@Test
+	public void Testcase_placeOrder_verifyID_invalidJson() {
+
+		JSONObject inputJSon = new JSONObject();
+		int id = 0;
+		String actualMessage = null, expectedMessage;
+		try {
+
+			// Create test data
+			inputJSon = new JSONObject(CommonUtils.getExcelData("TestCaseInputJSON", testCaseName));
+			expectedMessage = CommonUtils.getExcelData("ErrorMessages", "ErrorMessage_IncorrectField_Stops");
+
+			// Place Order
+			id = CommonUtils.placeOrder(inputJSon);
+
+			// Fetch message
+			if (id == 0) {
+				actualMessage = apiCallHandlerObj.getResponseJson().getString(field_message);
+			}
+			logger.info("Message for incorrect stops is : " + actualMessage);
+
+			Assert.assertEquals(actualMessage, expectedMessage, "Failure Message do not match ");
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			Assert.fail(e.getMessage());
+		}
+
+	}
+
+	/**
+	 * description : Verifies place advance order functionality with past date instead of future
+	 */
+	@Test()
+	public void Testcase_placeAdvanceOrder_OrderInPastDate() {
+		JSONObject inputJSon = new JSONObject();
+		int id = 0;
+		String actualMessage = null, expectedMessage;
+		try {
+
+			// Create test data
+			inputJSon = CommonUtils.getDefaultJSON(false);
+			inputJSon.put(field_orderAt, CommonUtils.getFuturePastDate(false, false, 0));
+			expectedMessage = CommonUtils.getExcelData("ErrorMessages", "ErrorMessage_PastOrderTime");
+
+			// Place Order
+			id = CommonUtils.placeOrder(inputJSon);
+
+			// Fetch message
+			if (id == 0) {
+				actualMessage = apiCallHandlerObj.getResponseJson().getString(field_message);
+			}
+			logger.info("Message for incorrect stops is : " + actualMessage);
+
+			Assert.assertEquals(actualMessage, expectedMessage, "Failure Message do not match ");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			Assert.fail(e.getMessage());
+		}
+
+	}
+
+	
 	@BeforeMethod
 	public void beforeMethod(Method method) {
 		testCaseName = method.getName();
