@@ -1,7 +1,7 @@
 
 # Setup and execution:
 
-Refer to the UserGuide.doc for the steps to setup and run the project. It contains screenshots and references for various steps.
+Refer to the UserGuide.docx for the steps to setup and run the project. It contains screenshots and references for various steps.
 
 # Test Coverage 
 
