@@ -20,7 +20,6 @@ public class DriverTakeOrderTests {
 	private static String field_message = "message";
 	private static ApiCallHandler apiCallHandlerObj = CommonUtils.apiCallHandlerObj;
 
-
 	/**
 	 * description : Verifies take order functionality when valid order Id is
 	 * provided as input
@@ -64,7 +63,7 @@ public class DriverTakeOrderTests {
 		try {
 			// Create test data
 			inputJSon = CommonUtils.getDefaultJSON(false);
-			expectedStatus = CommonUtils.getExcelData("TestData", "Status_Ongoing");
+			expectedStatus = CommonUtils.getExcelData("Constants", "Status_Ongoing");
 			// Place order
 			id = CommonUtils.placeOrder(inputJSon);
 			Assert.assertTrue(id != 0, "ID Not Generated ");

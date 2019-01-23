@@ -141,7 +141,7 @@ public class DriverCompleteOrderTests {
 		try {
 			// Create test data
 			inputJSon = CommonUtils.getDefaultJSON(false);
-			expectedStatus = CommonUtils.getExcelData("TestData", "Status_Completed");
+			expectedStatus = CommonUtils.getExcelData("Constants", "Status_Completed");
 
 			// Place Order
 			id = CommonUtils.placeOrder(inputJSon);
@@ -215,7 +215,7 @@ public class DriverCompleteOrderTests {
 			// Place order
 			id = CommonUtils.placeOrder(inputJSon);
 			Assert.assertTrue(id != 0, "ID Not Generated ");
-			
+
 			// Take Order
 			CommonUtils.takeOrder(id);
 			Assert.assertTrue(apiCallHandlerObj.getResponseJson().has("id"), "Take Order failed");

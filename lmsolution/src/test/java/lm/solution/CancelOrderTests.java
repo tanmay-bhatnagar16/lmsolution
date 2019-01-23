@@ -20,7 +20,6 @@ public class CancelOrderTests {
 	private static String field_message = "message";
 	private static ApiCallHandler apiCallHandlerObj = CommonUtils.apiCallHandlerObj;
 
-
 	/**
 	 * description : Verifies Cancel order functionality when valid order Id is
 	 * provided as input. Flow : ASSINGING to Cancelled
@@ -66,7 +65,7 @@ public class CancelOrderTests {
 		try {
 			// Create test data
 			inputJSon = CommonUtils.getDefaultJSON(false);
-			expectedStatus = CommonUtils.getExcelData("TestData", "Status_Cancelled");
+			expectedStatus = CommonUtils.getExcelData("Constants", "Status_Cancelled");
 
 			// Place Order
 			id = CommonUtils.placeOrder(inputJSon);
@@ -99,7 +98,7 @@ public class CancelOrderTests {
 		try {
 			// Create test data
 			inputJSon = CommonUtils.getDefaultJSON(false);
-			expectedStatus = CommonUtils.getExcelData("TestData", "Status_Cancelled");
+			expectedStatus = CommonUtils.getExcelData("Constants", "Status_Cancelled");
 
 			// Place Order
 			id = CommonUtils.placeOrder(inputJSon);

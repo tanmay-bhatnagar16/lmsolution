@@ -23,15 +23,13 @@ public class PlaceOrderTests {
 	static double rateBelowTwoKmNightCharge;
 	static double rateAboveTwoKmNightCharge;
 	private static ApiCallHandler apiCallHandlerObj = CommonUtils.apiCallHandlerObj;
-	private static String field_fare= "fare";
-	private static String field_distance= "drivingDistancesInMeters";
-	private static String field_amount= "amount";
-	private static String field_currency= "currency";
-	private static String field_message= "message";
-	private static String field_stops= "stops";
-	private static String field_orderAt= "OrderAT";
-	
-	
+	private static String field_fare = "fare";
+	private static String field_distance = "drivingDistancesInMeters";
+	private static String field_amount = "amount";
+	private static String field_currency = "currency";
+	private static String field_message = "message";
+	private static String field_stops = "stops";
+	private static String field_orderAt = "OrderAT";
 
 	/**
 	 * description : Verifies place order functionality and checks generation of
@@ -74,7 +72,7 @@ public class PlaceOrderTests {
 		try {
 
 			// Create test data
-			expectedCurrency = CommonUtils.getExcelData("TestData", "currency");
+			expectedCurrency = CommonUtils.getExcelData("VerificationData", "currency");
 			inputJSon = CommonUtils.getDefaultJSON(false);
 
 			// Place Order
@@ -135,10 +133,10 @@ public class PlaceOrderTests {
 		double expectedFare;
 		double actualFare;
 		try {
-			
+
 			// Create test data
-			inputJSon = new JSONObject(CommonUtils.getExcelData("TestCaseParams", testCaseName));
-			expectedFare = Double.parseDouble(CommonUtils.getExcelData("TestData", "Fare_LessThan_2KM"));
+			inputJSon = new JSONObject(CommonUtils.getExcelData("TestCaseInputJSON", testCaseName));
+			expectedFare = Double.parseDouble(CommonUtils.getExcelData("VerificationData", "Fare_LessThan_2KM"));
 
 			// Place Order
 			CommonUtils.placeOrder(inputJSon);
@@ -169,10 +167,10 @@ public class PlaceOrderTests {
 		try {
 
 			// Create test data
-			inputJSon = new JSONObject(CommonUtils.getExcelData("TestCaseParams", testCaseName));
-			fareRate = Double.parseDouble(CommonUtils.getExcelData("TestData", "FareRate_MoreThan_2KM"));
-			baseFare = Double.parseDouble(CommonUtils.getExcelData("TestData", "Fare_LessThan_2KM"));
-			rateKms = Double.parseDouble(CommonUtils.getExcelData("TestData", "RateKMS"));
+			inputJSon = new JSONObject(CommonUtils.getExcelData("TestCaseInputJSON", testCaseName));
+			fareRate = Double.parseDouble(CommonUtils.getExcelData("VerificationData", "FareRate_MoreThan_2KM"));
+			baseFare = Double.parseDouble(CommonUtils.getExcelData("VerificationData", "Fare_LessThan_2KM"));
+			rateKms = Double.parseDouble(CommonUtils.getExcelData("VerificationData", "RateKMS"));
 
 			// Place Order
 			CommonUtils.placeOrder(inputJSon);
@@ -258,9 +256,9 @@ public class PlaceOrderTests {
 		double expectedFare;
 		double actualFare;
 		try {
-			expectedFare = Double.parseDouble(CommonUtils.getExcelData("TestData", "Fare_LessThan_2KM"));
+			expectedFare = Double.parseDouble(CommonUtils.getExcelData("VerificationData", "Fare_LessThan_2KM"));
 			// Create test data
-			inputJSon = new JSONObject(CommonUtils.getExcelData("TestCaseParams", testCaseName));
+			inputJSon = new JSONObject(CommonUtils.getExcelData("TestCaseInputJSON", testCaseName));
 			inputJSon.put(field_orderAt, CommonUtils.getFuturePastDate(true, false, 0));
 
 			// Place Order
@@ -293,11 +291,11 @@ public class PlaceOrderTests {
 		try {
 
 			// Create test data
-			inputJSon = new JSONObject(CommonUtils.getExcelData("TestCaseParams", testCaseName));
+			inputJSon = new JSONObject(CommonUtils.getExcelData("TestCaseInputJSON", testCaseName));
 			inputJSon.put(field_orderAt, CommonUtils.getFuturePastDate(true, false, 0));
-			fareRate = Double.parseDouble(CommonUtils.getExcelData("TestData", "FareRate_MoreThan_2KM"));
-			baseFare = Double.parseDouble(CommonUtils.getExcelData("TestData", "Fare_LessThan_2KM"));
-			rateKms = Double.parseDouble(CommonUtils.getExcelData("TestData", "RateKMS"));
+			fareRate = Double.parseDouble(CommonUtils.getExcelData("VerificationData", "FareRate_MoreThan_2KM"));
+			baseFare = Double.parseDouble(CommonUtils.getExcelData("VerificationData", "Fare_LessThan_2KM"));
+			rateKms = Double.parseDouble(CommonUtils.getExcelData("VerificationData", "RateKMS"));
 
 			// Place Order
 			CommonUtils.placeOrder(inputJSon);
@@ -330,9 +328,9 @@ public class PlaceOrderTests {
 		double expectedFare;
 		double actualFare;
 		try {
-			expectedFare = Double.parseDouble(CommonUtils.getExcelData("TestData", "Fare_LessThan_2KM_Night"));
+			expectedFare = Double.parseDouble(CommonUtils.getExcelData("VerificationData", "Fare_LessThan_2KM_Night"));
 			// Create test data
-			inputJSon = new JSONObject(CommonUtils.getExcelData("TestCaseParams", testCaseName));
+			inputJSon = new JSONObject(CommonUtils.getExcelData("TestCaseInputJSON", testCaseName));
 			inputJSon.put(field_orderAt, CommonUtils.getFuturePastDate(true, true, 0));
 
 			// Place Order
@@ -362,11 +360,11 @@ public class PlaceOrderTests {
 		try {
 
 			// Create test data
-			inputJSon = new JSONObject(CommonUtils.getExcelData("TestCaseParams", testCaseName));
+			inputJSon = new JSONObject(CommonUtils.getExcelData("TestCaseInputJSON", testCaseName));
 			inputJSon.put(field_orderAt, CommonUtils.getFuturePastDate(true, false, 0));
-			fareRate = Double.parseDouble(CommonUtils.getExcelData("TestData", "FareRate_MoreThan_2KM"));
-			baseFare = Double.parseDouble(CommonUtils.getExcelData("TestData", "Fare_LessThan_2KM"));
-			rateKms = Double.parseDouble(CommonUtils.getExcelData("TestData", "RateKMS"));
+			fareRate = Double.parseDouble(CommonUtils.getExcelData("VerificationData", "FareRate_MoreThan_2KM"));
+			baseFare = Double.parseDouble(CommonUtils.getExcelData("VerificationData", "Fare_LessThan_2KM"));
+			rateKms = Double.parseDouble(CommonUtils.getExcelData("VerificationData", "RateKMS"));
 
 			// Place Order
 			CommonUtils.placeOrder(inputJSon);
@@ -384,7 +382,7 @@ public class PlaceOrderTests {
 		} catch (Exception e) { //
 			// TODO Auto-generated catch block
 			Assert.fail(e.getMessage());
-	
+
 		}
 
 	}
@@ -398,23 +396,21 @@ public class PlaceOrderTests {
 
 		JSONObject inputJSon = new JSONObject();
 		int id = 0;
-		String actualMessage = null,expectedMessage;
+		String actualMessage = null, expectedMessage;
 		try {
 
 			// Create test data
-			inputJSon = new JSONObject(CommonUtils.getExcelData("TestCaseParams", testCaseName));
+			inputJSon = new JSONObject(CommonUtils.getExcelData("TestCaseInputJSON", testCaseName));
 			expectedMessage = CommonUtils.getExcelData("ErrorMessages", "ErrorMessage_IncorrectField_Stops");
 
 			// Place Order
 			id = CommonUtils.placeOrder(inputJSon);
 
 			// Fetch message
-			if(id==0)
-			{
-				actualMessage= apiCallHandlerObj.getResponseJson().getString(field_message);
+			if (id == 0) {
+				actualMessage = apiCallHandlerObj.getResponseJson().getString(field_message);
 			}
 			logger.info("Message for incorrect stops is : " + actualMessage);
-
 
 			Assert.assertEquals(actualMessage, expectedMessage, "Failure Message do not match ");
 

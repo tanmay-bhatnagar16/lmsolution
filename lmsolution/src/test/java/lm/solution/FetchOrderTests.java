@@ -27,6 +27,7 @@ public class FetchOrderTests {
 	private static String field_fare = "fare";
 	private static String field_amount = "amount";
 	private static ApiCallHandler apiCallHandlerObj = CommonUtils.apiCallHandlerObj;
+
 	/**
 	 * description : Verifies fetch order functionality when valid order Id is
 	 * provided as input
@@ -71,7 +72,7 @@ public class FetchOrderTests {
 		try {
 			// Create test data
 			inputJSon = CommonUtils.getDefaultJSON(false);
-			expectedStatus = CommonUtils.getExcelData("TestData", "Status_Assigning");
+			expectedStatus = CommonUtils.getExcelData("Constants", "Status_Assigning");
 
 			// Place order
 			id = CommonUtils.placeOrder(inputJSon);
@@ -190,8 +191,8 @@ public class FetchOrderTests {
 
 	}
 
-
-	/** description : Verifies JSON Fields "Driving distances" for fetch order
+	/**
+	 * description : Verifies JSON Fields "Driving distances" for fetch order
 	 * functionality when valid order Id is provided as input
 	 */
 	@Test()
@@ -230,8 +231,8 @@ public class FetchOrderTests {
 
 	}
 
-
-	 /** description : Verifies JSON Fields "Stops" for fetch order functionality when
+	/**
+	 * description : Verifies JSON Fields "Stops" for fetch order functionality when
 	 * valid order Id is provided as input
 	 */
 	@Test()

@@ -44,7 +44,7 @@ public class CommonUtils {
 
 		try {
 			apiCallHandlerObj.setResponseJson(apiCallHandlerObj
-					.postRequest(ApiCallHandler.getHostUrl() + apiCallHandlerObj.getPlaceOrderEp(), inputJSon));
+					.postRequest(apiCallHandlerObj.getHostUrl() + apiCallHandlerObj.getPlaceOrderEp(), inputJSon));
 			id = apiCallHandlerObj.getResponseJson().getInt("id");
 
 		} catch (Exception e) {
@@ -62,7 +62,7 @@ public class CommonUtils {
 		JSONObject outputJSon = new JSONObject();
 		try {
 
-			String data = getExcelData("TestCaseParams", "Default");
+			String data = getExcelData("TestCaseInputJSON", "Default");
 			outputJSon = new JSONObject(data);
 			if (isAdvanceOrder) {
 
@@ -80,7 +80,7 @@ public class CommonUtils {
 		JSONObject outputJSon = null;
 		try {
 			String takeOrderResource = MessageFormat.format(apiCallHandlerObj.getTakeOrderEP(), String.valueOf(id));
-			outputJSon = apiCallHandlerObj.putRequest(ApiCallHandler.getHostUrl(), takeOrderResource);
+			outputJSon = apiCallHandlerObj.putRequest(apiCallHandlerObj.getHostUrl(), takeOrderResource);
 
 		} catch (Exception e) {
 			logger.error("Exception occured : " + e.getMessage());
@@ -93,7 +93,7 @@ public class CommonUtils {
 		JSONObject outputJSon = null;
 		try {
 			String completeResource = MessageFormat.format(apiCallHandlerObj.getCompleteOrderEP(), String.valueOf(id));
-			outputJSon = apiCallHandlerObj.putRequest(ApiCallHandler.getHostUrl(), completeResource);
+			outputJSon = apiCallHandlerObj.putRequest(apiCallHandlerObj.getHostUrl(), completeResource);
 
 		} catch (Exception e) {
 			logger.error("Exception occured : " + e.getMessage());
@@ -106,7 +106,7 @@ public class CommonUtils {
 		JSONObject outputJSon = null;
 		try {
 			String fetchOrderResource = MessageFormat.format(apiCallHandlerObj.getFetchOrderEP(), String.valueOf(id));
-			outputJSon = apiCallHandlerObj.getRequest(ApiCallHandler.getHostUrl(), fetchOrderResource);
+			outputJSon = apiCallHandlerObj.getRequest(apiCallHandlerObj.getHostUrl(), fetchOrderResource);
 
 		} catch (Exception e) {
 			logger.error("Exception occured : " + e.getMessage());
@@ -119,7 +119,7 @@ public class CommonUtils {
 		JSONObject outputJSon = null;
 		try {
 			String cancelOrderResource = MessageFormat.format(apiCallHandlerObj.getCancelOrderEP(), String.valueOf(id));
-			outputJSon = apiCallHandlerObj.putRequest(ApiCallHandler.getHostUrl(), cancelOrderResource);
+			outputJSon = apiCallHandlerObj.putRequest(apiCallHandlerObj.getHostUrl(), cancelOrderResource);
 
 		} catch (Exception e) {
 			logger.error("Exception occured : " + e.getMessage());
@@ -133,7 +133,7 @@ public class CommonUtils {
 		InputStream stream = loader.getResourceAsStream("config.properties");
 		try {
 			prop.load(stream);
-			ApiCallHandler.setHostUrl(prop.getProperty("host"));
+			apiCallHandlerObj.setHostUrl(prop.getProperty("host"));
 			apiCallHandlerObj.setPlaceOrderEp(prop.getProperty("placeOrderEndPoint"));
 			apiCallHandlerObj.setFetchOrderEp(prop.getProperty("fetchOrdersEndPoint"));
 			apiCallHandlerObj.setTakeOrderEp(prop.getProperty("takeOrderEndPoint"));
