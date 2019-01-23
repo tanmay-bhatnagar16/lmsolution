@@ -20,3 +20,6 @@ Refer to the UserGuide.doc for the steps to setup and run the project. It contai
 # Knows Issues / Scenarios not covered
 •	Scenarios to validate createdAT,completedAt,CancelledAt fields as the exact time could not be picked accurately.
 
+•	Due to dynamic nature of "stops" field surrently the JSON payload for the request is fetched from the excel file. This data could be dynamically generated but was more complex to implement in the given timeframe.
+
+
