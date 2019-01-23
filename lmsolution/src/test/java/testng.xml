@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="false">
+	<test name="Test">
+		<classes>
+			<class name="lm.solution.PlaceOrderTests" />
+			<class name="lm.solution.FetchOrderTests" />
+			<class name="lm.solution.DriverTakeOrderTests" />
+			<class name="lm.solution.DriverCompleteOrderTests" />
+			<class name="lm.solution.CancelOrderTests" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

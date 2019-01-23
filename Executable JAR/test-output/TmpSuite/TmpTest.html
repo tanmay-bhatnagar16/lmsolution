@@ -1,0 +1,264 @@
+<html>
+<head>
+<title>TestNG:  TmpTest</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>TmpTest</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>37/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Wed Jan 23 11:45:47 IST 2019</td>
+</tr>
+<tr><td>Total time:</td><td>91 seconds (91001 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='lm.solution.CancelOrderTests.TestCase_Cancel_Order_VerifyErrorMessage_InvalidID()'><b>TestCase_Cancel_Order_VerifyErrorMessage_InvalidID</b><br>Test class: lm.solution.CancelOrderTests</td>
+<td></td>
+<td>2</td>
+<td>lm.solution.CancelOrderTests@192b07fd</td></tr>
+<tr>
+<td title='lm.solution.CancelOrderTests.TestCase_Cancel_Order_VerifyOrderstatus_ValidID_AfterPlaceOrder()'><b>TestCase_Cancel_Order_VerifyOrderstatus_ValidID_AfterPlaceOrder</b><br>Test class: lm.solution.CancelOrderTests</td>
+<td></td>
+<td>2</td>
+<td>lm.solution.CancelOrderTests@192b07fd</td></tr>
+<tr>
+<td title='lm.solution.CancelOrderTests.TestCase_Cancel_Order_VerifyOrderstatus_ValidID_AfterTakeOrder()'><b>TestCase_Cancel_Order_VerifyOrderstatus_ValidID_AfterTakeOrder</b><br>Test class: lm.solution.CancelOrderTests</td>
+<td></td>
+<td>3</td>
+<td>lm.solution.CancelOrderTests@192b07fd</td></tr>
+<tr>
+<td title='lm.solution.CancelOrderTests.TestCase_Cancel_Order_VerifyStatusCode_InvalidID()'><b>TestCase_Cancel_Order_VerifyStatusCode_InvalidID</b><br>Test class: lm.solution.CancelOrderTests</td>
+<td></td>
+<td>2</td>
+<td>lm.solution.CancelOrderTests@192b07fd</td></tr>
+<tr>
+<td title='lm.solution.CancelOrderTests.TestCase_Cancel_Order_VerifyStatusCode_ValidID_AfterPlaceOrder()'><b>TestCase_Cancel_Order_VerifyStatusCode_ValidID_AfterPlaceOrder</b><br>Test class: lm.solution.CancelOrderTests</td>
+<td></td>
+<td>2</td>
+<td>lm.solution.CancelOrderTests@192b07fd</td></tr>
+<tr>
+<td title='lm.solution.CancelOrderTests.TestCase_Cancel_Order_VerifyStatusCode_ValidID_AfterTakeOrder()'><b>TestCase_Cancel_Order_VerifyStatusCode_ValidID_AfterTakeOrder</b><br>Test class: lm.solution.CancelOrderTests</td>
+<td></td>
+<td>3</td>
+<td>lm.solution.CancelOrderTests@192b07fd</td></tr>
+<tr>
+<td title='lm.solution.DriverCompleteOrderTests.TestCase_Complete_Order_VerifyErrorMessage_InvalidID()'><b>TestCase_Complete_Order_VerifyErrorMessage_InvalidID</b><br>Test class: lm.solution.DriverCompleteOrderTests</td>
+<td></td>
+<td>3</td>
+<td>lm.solution.DriverCompleteOrderTests@64bfbc86</td></tr>
+<tr>
+<td title='lm.solution.DriverCompleteOrderTests.TestCase_Complete_Order_VerifyOrderStatus_InvalidFlow_AssignedToComplete()'><b>TestCase_Complete_Order_VerifyOrderStatus_InvalidFlow_AssignedToComplete</b><br>Test class: lm.solution.DriverCompleteOrderTests</td>
+<td></td>
+<td>2</td>
+<td>lm.solution.DriverCompleteOrderTests@64bfbc86</td></tr>
+<tr>
+<td title='lm.solution.DriverCompleteOrderTests.TestCase_Complete_Order_VerifyOrderStatus_ValidID()'><b>TestCase_Complete_Order_VerifyOrderStatus_ValidID</b><br>Test class: lm.solution.DriverCompleteOrderTests</td>
+<td></td>
+<td>3</td>
+<td>lm.solution.DriverCompleteOrderTests@64bfbc86</td></tr>
+<tr>
+<td title='lm.solution.DriverCompleteOrderTests.TestCase_Complete_Order_VerifyStatusCode_InvalidFlow()'><b>TestCase_Complete_Order_VerifyStatusCode_InvalidFlow</b><br>Test class: lm.solution.DriverCompleteOrderTests</td>
+<td></td>
+<td>3</td>
+<td>lm.solution.DriverCompleteOrderTests@64bfbc86</td></tr>
+<tr>
+<td title='lm.solution.DriverCompleteOrderTests.TestCase_Complete_Order_VerifyStatusCode_InvalidID()'><b>TestCase_Complete_Order_VerifyStatusCode_InvalidID</b><br>Test class: lm.solution.DriverCompleteOrderTests</td>
+<td></td>
+<td>3</td>
+<td>lm.solution.DriverCompleteOrderTests@64bfbc86</td></tr>
+<tr>
+<td title='lm.solution.DriverCompleteOrderTests.TestCase_Complete_Order_VerifyStatusCode_ValidID()'><b>TestCase_Complete_Order_VerifyStatusCode_ValidID</b><br>Test class: lm.solution.DriverCompleteOrderTests</td>
+<td></td>
+<td>3</td>
+<td>lm.solution.DriverCompleteOrderTests@64bfbc86</td></tr>
+<tr>
+<td title='lm.solution.FetchOrderTests.TestCase_Fetch_Order_VerifyDrivingDistances_ValidID()'><b>TestCase_Fetch_Order_VerifyDrivingDistances_ValidID</b><br>Test class: lm.solution.FetchOrderTests</td>
+<td></td>
+<td>2</td>
+<td>lm.solution.FetchOrderTests@6e1567f1</td></tr>
+<tr>
+<td title='lm.solution.FetchOrderTests.TestCase_Fetch_Order_VerifyErrorMessage_InvalidID()'><b>TestCase_Fetch_Order_VerifyErrorMessage_InvalidID</b><br>Test class: lm.solution.FetchOrderTests</td>
+<td></td>
+<td>2</td>
+<td>lm.solution.FetchOrderTests@6e1567f1</td></tr>
+<tr>
+<td title='lm.solution.FetchOrderTests.TestCase_Fetch_Order_VerifyFareAmount_ValidID()'><b>TestCase_Fetch_Order_VerifyFareAmount_ValidID</b><br>Test class: lm.solution.FetchOrderTests</td>
+<td></td>
+<td>2</td>
+<td>lm.solution.FetchOrderTests@6e1567f1</td></tr>
+<tr>
+<td title='lm.solution.FetchOrderTests.TestCase_Fetch_Order_VerifyOrderStatusForPlacedOrder()'><b>TestCase_Fetch_Order_VerifyOrderStatusForPlacedOrder</b><br>Test class: lm.solution.FetchOrderTests</td>
+<td></td>
+<td>2</td>
+<td>lm.solution.FetchOrderTests@6e1567f1</td></tr>
+<tr>
+<td title='lm.solution.FetchOrderTests.TestCase_Fetch_Order_VerifyStatusCode_InvalidID()'><b>TestCase_Fetch_Order_VerifyStatusCode_InvalidID</b><br>Test class: lm.solution.FetchOrderTests</td>
+<td></td>
+<td>2</td>
+<td>lm.solution.FetchOrderTests@6e1567f1</td></tr>
+<tr>
+<td title='lm.solution.FetchOrderTests.TestCase_Fetch_Order_VerifyStatusCode_ValidID()'><b>TestCase_Fetch_Order_VerifyStatusCode_ValidID</b><br>Test class: lm.solution.FetchOrderTests</td>
+<td></td>
+<td>2</td>
+<td>lm.solution.FetchOrderTests@6e1567f1</td></tr>
+<tr>
+<td title='lm.solution.FetchOrderTests.TestCase_Fetch_Order_VerifyStopsCounts_ValidID()'><b>TestCase_Fetch_Order_VerifyStopsCounts_ValidID</b><br>Test class: lm.solution.FetchOrderTests</td>
+<td></td>
+<td>2</td>
+<td>lm.solution.FetchOrderTests@6e1567f1</td></tr>
+<tr>
+<td title='lm.solution.DriverTakeOrderTests.TestCase_Take_Order_VerifyErrorMessage_InvalidID()'><b>TestCase_Take_Order_VerifyErrorMessage_InvalidID</b><br>Test class: lm.solution.DriverTakeOrderTests</td>
+<td></td>
+<td>2</td>
+<td>lm.solution.DriverTakeOrderTests@55d56113</td></tr>
+<tr>
+<td title='lm.solution.DriverTakeOrderTests.TestCase_Take_Order_VerifyOrderStatus_ValidID()'><b>TestCase_Take_Order_VerifyOrderStatus_ValidID</b><br>Test class: lm.solution.DriverTakeOrderTests</td>
+<td></td>
+<td>2</td>
+<td>lm.solution.DriverTakeOrderTests@55d56113</td></tr>
+<tr>
+<td title='lm.solution.DriverTakeOrderTests.TestCase_Take_Order_VerifyStatusCode_InvalidFlow()'><b>TestCase_Take_Order_VerifyStatusCode_InvalidFlow</b><br>Test class: lm.solution.DriverTakeOrderTests</td>
+<td></td>
+<td>3</td>
+<td>lm.solution.DriverTakeOrderTests@55d56113</td></tr>
+<tr>
+<td title='lm.solution.DriverTakeOrderTests.TestCase_Take_Order_VerifyStatusCode_InvalidID()'><b>TestCase_Take_Order_VerifyStatusCode_InvalidID</b><br>Test class: lm.solution.DriverTakeOrderTests</td>
+<td></td>
+<td>2</td>
+<td>lm.solution.DriverTakeOrderTests@55d56113</td></tr>
+<tr>
+<td title='lm.solution.DriverTakeOrderTests.TestCase_Take_Order_VerifyStatusCode_ValidID()'><b>TestCase_Take_Order_VerifyStatusCode_ValidID</b><br>Test class: lm.solution.DriverTakeOrderTests</td>
+<td></td>
+<td>2</td>
+<td>lm.solution.DriverTakeOrderTests@55d56113</td></tr>
+<tr>
+<td title='lm.solution.CancelOrderTests.TestCase_cancel_Order_VerifyStatusCode_InvalidFlow()'><b>TestCase_cancel_Order_VerifyStatusCode_InvalidFlow</b><br>Test class: lm.solution.CancelOrderTests</td>
+<td></td>
+<td>4</td>
+<td>lm.solution.CancelOrderTests@192b07fd</td></tr>
+<tr>
+<td title='lm.solution.PlaceOrderTests.Testcase_placeAdvanceOrder_VerifyId()'><b>Testcase_placeAdvanceOrder_VerifyId</b><br>Test class: lm.solution.PlaceOrderTests</td>
+<td></td>
+<td>3</td>
+<td>lm.solution.PlaceOrderTests@64bf3bbf</td></tr>
+<tr>
+<td title='lm.solution.PlaceOrderTests.Testcase_placeAdvanceOrder_verifyDistancesCount()'><b>Testcase_placeAdvanceOrder_verifyDistancesCount</b><br>Test class: lm.solution.PlaceOrderTests</td>
+<td></td>
+<td>1</td>
+<td>lm.solution.PlaceOrderTests@64bf3bbf</td></tr>
+<tr>
+<td title='lm.solution.PlaceOrderTests.Testcase_placeAdvanceOrder_verifyFareAboveTwoKms()'><b>Testcase_placeAdvanceOrder_verifyFareAboveTwoKms</b><br>Test class: lm.solution.PlaceOrderTests</td>
+<td></td>
+<td>1</td>
+<td>lm.solution.PlaceOrderTests@64bf3bbf</td></tr>
+<tr>
+<td title='lm.solution.PlaceOrderTests.Testcase_placeAdvanceOrder_verifyFareAboveTwoKms_NightCharges()'><b>Testcase_placeAdvanceOrder_verifyFareAboveTwoKms_NightCharges</b><br>Test class: lm.solution.PlaceOrderTests</td>
+<td></td>
+<td>1</td>
+<td>lm.solution.PlaceOrderTests@64bf3bbf</td></tr>
+<tr>
+<td title='lm.solution.PlaceOrderTests.Testcase_placeAdvanceOrder_verifyFareBelowTwoKms()'><b>Testcase_placeAdvanceOrder_verifyFareBelowTwoKms</b><br>Test class: lm.solution.PlaceOrderTests</td>
+<td></td>
+<td>1</td>
+<td>lm.solution.PlaceOrderTests@64bf3bbf</td></tr>
+<tr>
+<td title='lm.solution.PlaceOrderTests.Testcase_placeAdvanceOrder_verifyFareBelowTwoKms_NightCharges()'><b>Testcase_placeAdvanceOrder_verifyFareBelowTwoKms_NightCharges</b><br>Test class: lm.solution.PlaceOrderTests</td>
+<td></td>
+<td>1</td>
+<td>lm.solution.PlaceOrderTests@64bf3bbf</td></tr>
+<tr>
+<td title='lm.solution.PlaceOrderTests.Testcase_placeOrder_verifyCurrency()'><b>Testcase_placeOrder_verifyCurrency</b><br>Test class: lm.solution.PlaceOrderTests</td>
+<td></td>
+<td>1</td>
+<td>lm.solution.PlaceOrderTests@64bf3bbf</td></tr>
+<tr>
+<td title='lm.solution.PlaceOrderTests.Testcase_placeOrder_verifyDistancesCount()'><b>Testcase_placeOrder_verifyDistancesCount</b><br>Test class: lm.solution.PlaceOrderTests</td>
+<td></td>
+<td>1</td>
+<td>lm.solution.PlaceOrderTests@64bf3bbf</td></tr>
+<tr>
+<td title='lm.solution.PlaceOrderTests.Testcase_placeOrder_verifyFareAboveTwoKms()'><b>Testcase_placeOrder_verifyFareAboveTwoKms</b><br>Test class: lm.solution.PlaceOrderTests</td>
+<td></td>
+<td>1</td>
+<td>lm.solution.PlaceOrderTests@64bf3bbf</td></tr>
+<tr>
+<td title='lm.solution.PlaceOrderTests.Testcase_placeOrder_verifyFareBelowTwoKms()'><b>Testcase_placeOrder_verifyFareBelowTwoKms</b><br>Test class: lm.solution.PlaceOrderTests</td>
+<td></td>
+<td>1</td>
+<td>lm.solution.PlaceOrderTests@64bf3bbf</td></tr>
+<tr>
+<td title='lm.solution.PlaceOrderTests.Testcase_placeOrder_verifyID()'><b>Testcase_placeOrder_verifyID</b><br>Test class: lm.solution.PlaceOrderTests</td>
+<td></td>
+<td>1</td>
+<td>lm.solution.PlaceOrderTests@64bf3bbf</td></tr>
+<tr>
+<td title='lm.solution.PlaceOrderTests.Testcase_placeOrder_verifySingleStopValue()'><b>Testcase_placeOrder_verifySingleStopValue</b><br>Test class: lm.solution.PlaceOrderTests</td>
+<td></td>
+<td>1</td>
+<td>lm.solution.PlaceOrderTests@64bf3bbf</td></tr>
+</table><p>
+</body>
+</html>
